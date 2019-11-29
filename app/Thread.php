@@ -23,4 +23,25 @@ class Thread extends Model
     {
         return $this->hasMany(Reply::class);
     }
+
+    /**
+     * creator function
+     *
+     * @return user name who write the thread void
+     */
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * addReply function
+     *
+     * @param [type] $reply
+     * @return void
+     */
+    public function addReply($reply)
+    {
+        $this->replies()->create($reply);
+    }
 }
