@@ -18,7 +18,7 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        $threads = Thread::all();
+        $threads = Thread::latest()->get();
         return view('threads.index', compact('threads'));
     }
 
@@ -40,7 +40,15 @@ class ThreadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $thread = Thread::create([
+            'user_id' => auth()->id(),
+            'channel_id' => request('channel_id'),
+            'title' => request('title'),
+            'slug' => str_slug(request('title')),
+            'body' => request('body')
+        ]);
+
+        return redirect($thread->path());
     }
 
     /**
