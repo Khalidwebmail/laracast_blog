@@ -19,6 +19,7 @@ Route::get('/', function () {
  * Thread controller
  */
 Route::get('/threads','ThreadController@index');
+Route::get('/threads/create','ThreadController@create');
 Route::get('/threads/{thread}','ThreadController@show');
 Route::post('/threads/store','ThreadController@store');
 /**

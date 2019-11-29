@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Channel;
 use App\Thread;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,8 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        //
+        $channels = Channel::all();
+        return view('threads.create', compact('channels'));
     }
 
     /**
@@ -40,6 +42,12 @@ class ThreadController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'channel_id' => 'required'
+        ]);
+        
         $thread = Thread::create([
             'user_id' => auth()->id(),
             'channel_id' => request('channel_id'),
