@@ -27,4 +27,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 /**
  * Reply controller
  */
-Route::post('/threads}/{thread}/replies','ReplyController@store');
+Route::post('/threads/{thread}/replies','ReplyController@store');
