@@ -17,9 +17,18 @@ class ThreadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    // public function index($channel_slug = null)
+    public function index(Channel $channel)
     {
-        $threads = Thread::latest()->get();
+        if($channel->exists)
+        {
+            // $channel_id = Channel::where('slug', $channel_slug)->first()->id;
+            // $threads = Thread::where('channel_id', $channel_id)->latest()->get();
+            $threads = $channel->threads()->latest()->get();
+        }
+        else{
+            $threads = Thread::latest()->get();
+        }
         return view('threads.index', compact('threads'));
     }
 
@@ -30,8 +39,7 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        $channels = Channel::all();
-        return view('threads.create', compact('channels'));
+        return view('threads.create');
     }
 
     /**
