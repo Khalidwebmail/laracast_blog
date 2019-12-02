@@ -39,7 +39,8 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        return view('threads.create');
+        $channels = Channel::all();
+        return view('threads.create', compact('channels'));
     }
 
     /**
@@ -60,7 +61,7 @@ class ThreadController extends Controller
             'user_id' => auth()->id(),
             'channel_id' => request('channel_id'),
             'title' => request('title'),
-            'slug' => str_slug(request('title')),
+            // 'slug' => str_slug(request('title')),
             'body' => request('body')
         ]);
 
