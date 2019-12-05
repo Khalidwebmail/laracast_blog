@@ -20,29 +20,29 @@ abstract class Filters
     {
         $this->builder = $builder;
 
-        // foreach($this->getFilters() as $filter => $value)
-        // {
-        //     if(method_exists($this, $filter))
-        //     {
-        //         $this->$filter($value);
-        //     }
-
-        //     return $this->builder;
-        // }
-        $this->getFilters()
-            ->filter(function($filter) {
-                return method_exists($this, $filter);
-            })
-            ->each(function($filter, $value) {
+        foreach($this->getFilters() as $filter => $value)
+        {
+            if(method_exists($this, $filter))
+            {
                 $this->$filter($value);
-            });
+            }
+        }
+        return $this->builder;
 
-        return $builder;
+        // $this->getFilters()
+        //     ->filter(function($filter) {
+        //         return method_exists($this, $filter);
+        //     })
+        //     ->each(function($filter, $value) {
+        //         $this->$filter($value);
+        //     });
+
+        // return $builder;
     }
 
     public function getFilters()
     {
-        return collect($this->request->intersect($this->filters))->flip();
-        // return $this->request->intersect($this->filters);
+        // return collect($this->request->intersect($this->filters))->flip();
+        return $this->request->only($this->filters);
     }
 }
