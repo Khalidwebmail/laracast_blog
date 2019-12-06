@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Favourite;
 use App\Reply;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class FavouriteController extends Controller
 {
