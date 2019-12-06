@@ -21,7 +21,7 @@ class Reply extends Model
 
     public function favourites()
     {
-        return $this->morphMany(Favourite::class, 'favourited');
+        return $this->morphMany(Favourite::class, 'favourite');
     }
 
     public function favourite()

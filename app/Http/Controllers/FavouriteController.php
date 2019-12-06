@@ -41,10 +41,11 @@ class FavouriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Reply $reply)
+    public function store(Reply $reply)
     {
-
-        return $reply->favourite();
+        // return $reply;
+        $reply->favourite();
+        return back();
 
         // $reply->favourites()->create(['user_id' => auth()->id()]);
 

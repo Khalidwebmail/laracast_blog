@@ -29,6 +29,11 @@ Route::post('/threads/store','ThreadController@store');
  */
 Route::post('/threads/{thread}/replies','ReplyController@store');
 
+/**
+ * Favorite controller
+ */
+Route::post('/replies/{reply}/favorites', 'FavouriteController@store');
+
 
 
 Auth::routes();
