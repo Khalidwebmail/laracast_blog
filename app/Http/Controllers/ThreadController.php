@@ -29,7 +29,7 @@ class ThreadController extends Controller
         // else{
         //     $threads = Thread::latest();
         // }
-        
+
         $threads = $this->getThreads($channel, $filters);
         if(request()->wantsJson())
         {

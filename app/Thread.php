@@ -12,6 +12,7 @@ class Thread extends Model
     public static function boot()
     {
         parent::boot();
+
         static::addGlobalScope('replyCount', function($builder) {
             $builder->withCount('replies');
         });
