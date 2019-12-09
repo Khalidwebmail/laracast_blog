@@ -2,12 +2,10 @@
 
 namespace App;
 
-use App\Traits\Favoritable;
 use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-    use Favoritable;
 
     protected $guarded = [];
 

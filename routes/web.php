@@ -34,6 +34,10 @@ Route::post('/threads/{thread}/replies','ReplyController@store');
  */
 Route::post('/replies/{reply}/favorites', 'FavouriteController@store');
 
+/**
+ * Profile routes
+ */
+Route::get('/profiles/{user}','ProfileController@show');
 
 
 Auth::routes();
