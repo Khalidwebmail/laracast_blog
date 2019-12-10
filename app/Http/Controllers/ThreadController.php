@@ -62,7 +62,7 @@ class ThreadController extends Controller
             'body' => 'required',
             'channel_id' => 'required'
         ]);
-        
+
         $thread = Thread::create([
             'user_id' => auth()->id(),
             'channel_id' => request('channel_id'),
@@ -121,6 +121,7 @@ class ThreadController extends Controller
     public function destroy($channel, Thread $thread)
     {
         // $thread->replies()->delete();
+        $this->authorize('update', $thread);
         $thread->delete();
         if(request()->wantsJson())
         {
