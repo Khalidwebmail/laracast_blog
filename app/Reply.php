@@ -2,11 +2,13 @@
 
 namespace App;
 
+use App\Traits\RecordActivity;
 use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-
+    use RecordActivity;
+    
     protected $guarded = [];
 
     protected $with = ['favourites', 'owner'];

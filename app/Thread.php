@@ -2,15 +2,18 @@
 
 namespace App;
 
+use App\Traits\RecordActivity;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
 
+    use RecordActivity;
+
     protected $guarded = [];
 
     protected $with = ['creator', 'channel'];
-    
+
     public static function boot()
     {
         parent::boot();
@@ -22,7 +25,26 @@ class Thread extends Model
         static::deleting(function($thread) {
             $thread->replies()->delete();
         });
+
+        // static::created(function ($thread) {
+        //     $thread->recordActivity('created');
+        // });
     }
+
+    // protected function recordActivity($event)
+    // {
+    //     Activity::create([
+    //         'user_id'       => auth()->id(),
+    //         'type'          => $this->getActivityType($event),
+    //         'subject_id'    => $this->id,
+    //         'subject_type'  =>  get_class($this)
+    //     ]);
+    // }
+
+    // protected function getActivityType($event)
+    // {
+    //     return $event . '_' . strtolower((new ReflectionClass($this))->getShortName());
+    // }
 
     public function path()
     {
