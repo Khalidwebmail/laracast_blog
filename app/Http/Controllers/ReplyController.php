@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Reply;
 use App\Thread;
+use App\Traits\RecordActivity;
 use Illuminate\Http\Request;
 
 class ReplyController extends Controller
 {
+    use RecordActivity;
     /**
      * Display a listing of the resource.
      *

@@ -45,4 +45,9 @@ class Reply extends Model
     {
         return $this->favourites->count();
     }
+
+    public function thread()
+    {
+        return $this->belongsTo(Thread::class);
+    }
 }
