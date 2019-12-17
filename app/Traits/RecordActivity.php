@@ -18,6 +18,10 @@ trait RecordActivity
                 $model->recordActivity($event);
             });
         }
+
+        static::deleting(function($model) {
+            $model->activity()->delete();
+        });
         // static::created(function ($thread) {
         //     $thread->recordActivity('created');
         // });
