@@ -1,13 +1,10 @@
+@component("profiles.activities.activities")
+    @slot('heading')
+        {{ $profile_user->name }} published 
+        <a href="{{ $activity->subject->path() }}">{{ $activity->subject->title }}</a>
+    @endslot
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="level">
-            <span class="flex">
-                {{ $profile_user->name }} published thread
-            </span>
-        </div>
-    </div>
-    <div class="panel-body">
+    @slot('body')
         {{ $activity->subject->body }}
-    </div>
-</div>
+    @endslot
+@endcomponent

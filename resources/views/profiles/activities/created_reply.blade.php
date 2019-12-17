@@ -1,15 +1,10 @@
+@component("profiles.activities.activities")
+    @slot('heading')
+        {{ $profile_user->name }} reply to 
+        <a href="{{ $activity->subject->thread->path() }}">{{ $activity->subject->thread->title }}</a>
+    @endslot
 
-                                
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="level">
-            <span class="flex">
-                {{ $profile_user->name }} reply to 
-                <a href="{{ $activity->subject->thread->path() }}">{{ $activity->subject->thread->title }}</a>
-            </span>
-        </div>
-    </div>
-    <div class="panel-body">
+    @slot('body')
         {{ $activity->subject->body }}
-    </div>
-</div>
+    @endslot
+@endcomponent
