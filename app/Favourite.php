@@ -8,4 +8,9 @@ class Favourite extends Model
 {
     
     protected $guarded = [];
+
+    public function favorited()
+    {
+        return $this->morphTo();
+    }
 }

@@ -2,10 +2,14 @@
 
 namespace App;
 
+use App\Traits\RecordActivity;
 use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
+
+    use RecordActivity;
+
     protected $guarded = [];
 
     public function subject()
