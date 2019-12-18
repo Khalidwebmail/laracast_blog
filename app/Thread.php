@@ -17,26 +17,23 @@ class Thread extends Model
     public static function boot()
     {
         parent::boot();
-
         static::addGlobalScope('replyCount', function($builder) {
             $builder->withCount('replies');
         });
-
         static::deleting(function($thread) {
             $thread->replies->each->delete();
             // $thread->replies->each(function($reply) {
             //     $reply->delete();
             // });
         });
-
         // static::deleting(function($thread) {
         //     $thread->replies()->delete();
         // })
-
         // static::created(function ($thread) {
         //     $thread->recordActivity('created');
         // });
     }
+
 
     // protected function recordActivity($event)
     // {
