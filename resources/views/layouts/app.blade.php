@@ -31,6 +31,7 @@
         @include('layouts.partial.navbar')
 
         @yield('content')
+        <flash message="{{ session('flash') }}"></flash>
     </div>
 
     <!-- Scripts -->
